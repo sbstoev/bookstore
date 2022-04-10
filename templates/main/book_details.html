@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+<div class="SectionTitle">
+    <div class="TextSection">Book Details</div>
+
+</div> <br><br>
+<div class="row bookSingle">
+    <div class="col-6">
+        <div class="imageCover">
+            <img src="{{ book.cover_photo.url}}"
+                 class="w-100 rounded mx-auto d-block" alt="description">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="imageTextimageText">
+            <div class="imageTextTitle">{{ book.title }}</div>
+            <br>
+            <div class="imageTextAuthor"> <i>{{ book.author }}</i> </div>
+            <br>
+            <div class="imageTextCategory">{{ book.genre }}</div>
+            <br>
+            <div class="imageTextDescription">{{ book.description }}</div>
+            <br> <br>
+            <a href="#" class="btn btn-primary">Add to favourites</a>
+            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="#" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

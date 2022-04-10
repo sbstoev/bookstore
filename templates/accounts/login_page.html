@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+{#<h1 class="display-4">This is the Login page</h1>/#}
+<div class="row">
+    <div class="col-7">
+
+        <!-- Login Form -->
+        <form class="row g-3" method="POST">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="register">Log In</div>
+            </div>
+            <div class="col-md-12">
+                <label for="inputEmail4" class="form-label">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="col-md-12">
+                <label for="inputEmail4" class="form-label">Password:</label>
+                {{ form.password }}
+            </div>
+            <div class="col--md-12">
+              <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+        </form>
+        <!-- End Login Form -->
+
+    </div>
+</div>
+    <div class="col-lg-3"></div>
+
+<h3>If you do not have a profile</h3>
+<a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+
+
+{% endblock %}

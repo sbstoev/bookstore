@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+<div class="row">
+    <div class="col-7">
+
+        <!-- Login Form -->
+        <form class="row g-3" method="POST" enctype="multipart/form-data">
+            <div class="col-md-12">
+                <div class="register">Create Book</div>
+            </div>
+            {% csrf_token %}
+            {{ form }}
+            <div class="col--md-12">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        <!-- End Login Form -->
+
+    </div>
+    <div class="col-5">
+        <div class="imageBack"></div>
+    </div>
+</div>
+
+{% endblock %}

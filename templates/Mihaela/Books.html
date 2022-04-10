@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+   
+      <div class="SectionTitle">
+        <div class="TextSection">Books</div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+           Genres
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Psychology</a></li>
+            <li><a class="dropdown-item" href="#">Philosophy</a></li>
+            <li><a class="dropdown-item" href="#">Fiction</a></li>
+            <li><a class="dropdown-item" href="#">History</a></li>
+            <li><a class="dropdown-item" href="#">Poetry</a></li>
+          </ul>
+        </div>
+      </div> <br><br>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="./images/Group 15.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">The Work of Art in the Age of Its Mechanical Reproduction</h5>
+              <p class="card-text author"><i>Walter Benjamin</i> </p>
+              <p class="card-text genre">Philosophy</p>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              
+              <a href="#" class="btn btn-primary">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/Group 14.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">The Use of Pleasure</h5>
+              <p class="card-text author"><i>Michel Foucault</i> </p>
+              <p class="card-text genre">Philosophy</p>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <a href="#" class="btn btn-primary">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/Group 11.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Toward the Critique of Violence</h5>
+              <p class="card-text author"><i>Walter Benjamin</i> </p>
+              <p class="card-text genre">Philosophy</p>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {# When authenticated: #}
+    {% if request.user.is_staff %}
+      <div class="SectionTitle">
+        <div class="TextSection">My Books</div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+           Genres
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Psychology</a></li>
+            <li><a class="dropdown-item" href="#">Philosophy</a></li>
+            <li><a class="dropdown-item" href="#">Fiction</a></li>
+            <li><a class="dropdown-item" href="#">History</a></li>
+            <li><a class="dropdown-item" href="#">Poetry</a></li>
+          </ul>
+        </div>
+      </div> <br><br>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="./images/Group 15.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">The Work of Art in the Age of Its Mechanical Reproduction</h5>
+              <p class="card-text author"><i>Walter Benjamin</i> </p>
+              <p class="card-text genre">Philosophy</p>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+              <a href="#" class="btn btn-primary">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/Group 14.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">The Use of Pleasure</h5>
+              <p class="card-text author"><i>Michel Foucault</i> </p>
+              <p class="card-text genre">Philosophy</p>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <a href="#" class="btn btn-primary">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/Group 11.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Toward the Critique of Violence</h5>
+              <p class="card-text author"><i>Walter Benjamin</i> </p>
+              <p class="card-text genre">Philosophy</p>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+{% endblock %}
