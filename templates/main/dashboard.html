@@ -27,6 +27,8 @@
     <br>
     <a href="{% url 'create book' %}" class="btn btn-primary">Add</a>
     <br>
+        <!-- Card with Info for the Book -->
+
         <div class="container mb-5">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 {% for book in books %}
@@ -38,7 +40,11 @@
                                 <p class="card-text author"><i>{{ book.author }}</i> </p>
                                 <p class="card-text genre">{{ book.genre }}</p>
                                 <p class="card-text">{{ book.description }}</p>
-                                <a href="#" class="btn btn-primary">Add to favourites</a>
+                                {% if request.user in book.favourites.filter %}
+                                    <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from favourites</a>
+                                {% else %}
+                                    <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Add to favourites</a>
+                                {% endif %}
                                 <a href="{% url 'book details' book.pk %}" class="btn btn-primary">Details</a>
                                 <a href="#" class="btn btn-primary">Edit</a>
                             </div>
@@ -47,118 +53,5 @@
                 {% endfor %}
             </div>
         </div>
-      {# When authenticated: #}
-    {% if request.user.is_authenticated %}
-      <div class="SectionTitle">
-        <div class="TextSection">My Books</div>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-           Genres
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Psychology</a></li>
-            <li><a class="dropdown-item" href="#">Philosophy</a></li>
-            <li><a class="dropdown-item" href="#">Fiction</a></li>
-            <li><a class="dropdown-item" href="#">History</a></li>
-            <li><a class="dropdown-item" href="#">Poetry</a></li>
-          </ul>
-        </div>
-      </div> <br><br>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="{% static 'images/Group 15.png' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">The Work of Art in the Age of Its Mechanical Reproduction</h5>
-              <p class="card-text author"><i>Walter Benjamin</i> </p>
-              <p class="card-text genre">Philosophy</p>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 
-              <a href="#" class="btn btn-primary">Add to favourites</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./images/Group 14.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">The Use of Pleasure</h5>
-              <p class="card-text author"><i>Michel Foucault</i> </p>
-              <p class="card-text genre">Philosophy</p>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <a href="#" class="btn btn-primary">Add to favourites</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./images/Group 11.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Toward the Critique of Violence</h5>
-              <p class="card-text author"><i>Walter Benjamin</i> </p>
-              <p class="card-text genre">Philosophy</p>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Add to favourites</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endif %}
-
-{% endblock %}
-
-
-{#<h1 class='text-center'>#}
-{#        {% if books %}#}
-{#            All Books#}
-{#        {% else %}#}
-{#            No books yet#}
-{#        {% endif %}#}
-{#</h1>#}
-{##}
-{#    {% if books %}#}
-{##}
-{#        <!-- If there are books -->#}
-{##}
-{#        <div class="container mb-5">#}
-{#            <div class="row mb-5">#}
-{#                {% for book in books %}#}
-{#                    <!-- Card with Info for the Book -->#}
-{#                    <div class="card ml-3 mb-3" style="width: 18rem;">#}
-{#                        <!-- Image -->#}
-{#                        <img src="{{ pet_photo.photo.url }}"#}
-{#                             class="card-img-top" alt="Photo description">#}
-{#                        <div class="card-body">#}
-{#                            <!-- Info for each pet on the photo -->#}
-{#                            {% for pet in pet_photo.tagged_pets.all %}#}
-{#                                <h5 class="card-title">{{ pet.name }}{% if pet.date_of_birth %}</h5>#}
-{#                                    {{ pet.age }}#}
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
-{#                            <!-- First 30 chars from the description -->#}
-{#                            <p class="card-text">{{ book.description|truncatechars:30}}</p>#}
-{#                            <!-- Button to the Book Details Page -->#}
-{#                            <a href="{% url 'book details' book.id %}" class="btn btn-primary">See details</a>#}
-{#                            <!-- Button to the Book Edit Page -->#}
-{#                            {% if request.user.is_staff %}#}
-{#                                <a href="{% url 'book edit' book.id %}" class="btn btn-primary">Edit</a>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <!-- End  Card -->#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#    {% else %}#}
-{##}
-{#        <!-- If there are NO books -->#}
-{##}
-{#        <div class=" row d-flex justify-content-center align-content-center">#}
-{#            <!-- Button to Add a new Photo -->#}
-{#            <a href="#" class="btn btn-lg btn-secondary row align-self-baseline">Add Photo</a>#}
-{#        </div>#}
-{##}
-{#    {% endif %}#}
-{##}
-{#    <!-- End Books -->#}
+        <!-- End Card -->

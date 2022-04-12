@@ -23,6 +23,7 @@ class DashboardView(views.ListView):
     context_object_name = 'books'  # rename the object from class Book
 
 
+
 class AboutUsView(views.ListView):
     model = Book
     template_name = 'main/about_us.html'
