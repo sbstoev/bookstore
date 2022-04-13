@@ -1,6 +1,120 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
 
-<h1 class="display-4">This is the About Us page</h1>
+<div class="Content">
+
+    <div class="SectionTitle">
+        <div class="TextSection">About Us</div>
+    </div> <br><br>
+<div class="row AboutUsText">
+    <div class="col-6">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="employee">
+                    <img src="{% static 'images/girl.jpg' %}" class="card-img-top" alt="...">
+                    <br>
+                    <div class="emplName">
+                        Jane Austin <br> <span>Founder</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="employee">
+                    <img src="{% static 'images/boy.png' %}" class="card-img-top" alt="...">
+                    <br>
+                    <div class="emplName">
+                        Boy George<br> <span>Marketing Specialist</span>
+                    </div>
+                </div>
+            </div>
+      <div class="col">
+        <div class="employee">
+          <img src="{% static 'images/will.png' %}" class="card-img-top" alt="...">
+          <br>
+          <div class="emplName">
+         Will Smith<br> <span>Translator</span>
+
+           </div>
+        </div>
+      </div>
+
+    </div>
+    <br> <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+
+      <div class="col">
+        <div class="employee">
+          <img src="{% static 'images/hana.png' %}" class="card-img-top" alt="...">
+          <br>
+          <div class="emplName">
+          Hana Montana <br> <span>PR</span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="employee">
+          <img src="{% static 'images/Tom.png' %}" class="card-img-top" alt="...">
+          <br>
+          <div class="emplName">
+           Tom Jones<br> <span>Translator</span>
+
+           </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="employee">
+          <img src="{% static 'images/sara.png' %}" class="card-img-top" alt="...">
+          <br>
+          <div class="emplName">
+         Sara Parker<br> <span>Translator</span>
+
+           </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+
+
+
+    </div>
+  </div>
+    <div class="col-6">
+    <div class="AbText">KX - Critique and Humanism Publishing House appears as a publishing brand in 1990 - at that time the publishing activity was part of the broader operating of a non-profit organization established by university professors and aiming at publishing books but also at doing researches in social sciences and publishing their results in a review under the same name.
+<br><br>
+      In 1995 the publishing house became totally independent, went under a radical reorganization, and makes the first steps in what has nowadays become our consistent editorial and publishing policy. <br>
+      <br>
+      For more than 25 years now, our main activity has been publishing books in humanities and social sciences , and experimenting with exquisite fiction on the very border with philosophy. <br>
+     <br>
+      We are a small-size independent publishing company, and the only Bulgarian member of The International Alliance of Independent Publishers (headquarters in Paris), an organization of more than 500 publishers from more than 50 countries. <br>
+
+      Our renown is based on those more than 250 elite titles we have published – some of them exemplary pieces in contemporary humanities, others – among the most provocative titles in today’s fields of human and social sciences, art, sophisticated fiction. <br>
+
+
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+   <br><br>
+   <div class="row">
+     <div class="col-12 googleM">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.575246594172!2d23.32255421542811!3d42.691538979166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8572c68c5a3f%3A0x47cb5713dbf69c1f!2spl.%20Slaveykov!5e0!3m2!1sen!2sit!4v1649872794671!5m2!1sen!2sit"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     </div>
+   </div>
+
+      </div>
+
 
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from bookstore.main.views import HomeView, DashboardView, AboutUsView, CreateBookView, BookDetailsView
+from bookstore.main.views import HomeView, DashboardView, AboutUsView, CreateBookView, BookDetailsView, BookEditView
 
 urlpatterns = (
     path('', HomeView.as_view(), name='index'),     # <- landing page
@@ -9,7 +9,7 @@ urlpatterns = (
 
     path('book/details/<int:pk>/', BookDetailsView.as_view(), name='book details'),
     path('book/add/', CreateBookView.as_view(), name='create book'),
-    # path('book/edit/<int:pk>/', EditBookView.as_view(), name='edit book'),
+    path('book/edit/<int:pk>/', BookEditView.as_view(), name='edit book'),
     # path('book/delete/<int:pk>/', DeleteBookView.as_view(), name='delete book'),
 
     # path('photo/add/', CreateBookPhotoView.as_view(), name='create book photo'),

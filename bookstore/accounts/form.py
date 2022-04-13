@@ -109,42 +109,53 @@ class CreateProfileForm(auth_forms.UserCreationForm):
         }
 
 
-class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
+class EditProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._init_bootstrap_form_controls()
-        self.initial['gender'] = Profile.DO_NOT_SHOW
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ('first_name', 'last_name', 'picture', 'email', 'address', 'city', 'zip')
         widgets = {
             'first_name': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': 'Enter first name',
                 }
             ),
             'last_name': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': 'Enter last name',
                 }
             ),
-            'picture': forms.TextInput(
+            # 'picture': forms.TextInput(
+            #     attrs={
+            #         'class': 'form-control',
+            #         'placeholder': 'Enter URL',
+            #     }
+            # ),
+            'email': forms.EmailInput(
                 attrs={
-                    'placeholder': 'Enter URL',
+                    'class': 'form-control',
+                    'placeholder': 'name@gmail.com',
                 }
             ),
-            'description': forms.Textarea(
-                attrs={
-                    'placeholder': 'Enter description',
-                    'rows': 3,
+            'address': forms.TextInput(attrs={
+                    'class': 'form-control',
+                    'placeholder': '1234 Main St',
                 }
             ),
-            'date_of_birth': forms.DateInput(
-                attrs={
-                    'min': '1920-01-01',
+            'city': forms.TextInput(attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Enter City',
                 }
-            )
+            ),
+            'zip': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter Zip',
+                }
+            ),
         }
 
 

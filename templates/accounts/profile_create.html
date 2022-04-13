@@ -4,14 +4,12 @@
 
 <div class="row">
     <div class="col-7">
-
         <!-- Login Form -->
         <form class="row g-3" method="POST" enctype="multipart/form-data">
             <div class="col-md-12">
                 <div class="register">Create Account</div>
             </div>
             {% csrf_token %}
-{#            {{ form }}#}
             <div class="col-md-12">
                 <label for="inputEmail4" class="form-label">Username:</label>
                 {{ form.username }}
@@ -70,7 +68,6 @@
 
         </form>
         <!-- End Login Form -->
-
     </div>
     <div class="col-5">
         <div class="imageBack"></div>

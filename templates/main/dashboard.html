@@ -2,56 +2,44 @@
 {% load static %}
 {% block page_content %}
 
-    <div class="SectionTitle">
-        <div class="TextSection">Books</div>
-        <div class="dropdown">
-{#          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">#}
-{#           Genres#}
-{#          </button>#}
+<div class="SectionTitle">
+    <div class="TextSection">Books</div>
+</div>
 
-{#          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">#}
-{#            <li><a class="dropdown-item" href="#">Psychology</a></li>#}
-{#            <li><a class="dropdown-item" href="#">Philosophy</a></li>#}
-{#            <li><a class="dropdown-item" href="#">Fiction</a></li>#}
-{#            <li><a class="dropdown-item" href="#">History</a></li>#}
-{#            <li><a class="dropdown-item" href="#">Poetry</a></li>#}
-{#          </ul>#}
-        </div>
+<h1 class='text-center'>
+    {% if not books %}
+        No books yet
+    {% endif %}
+</h1>
 
-        <h1 class='text-center'>
-            {% if not books %}
-                No books yet
-            {% endif %}
-        </h1>
-    </div>
-    <br>
-    <a href="{% url 'create book' %}" class="btn btn-primary">Add</a>
-    <br>
-        <!-- Card with Info for the Book -->
+<br>
+<a href="{% url 'create book' %}" class="btn btn-primary">Add</a>
+<br>
+    <!-- Card with Info for the Book -->
 
-        <div class="container mb-5">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                {% for book in books %}
-                    <div class="col">
-                        <div class="card">
-                            <img src="{{ book.cover_photo.url }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ book.title }}</h5>
-                                <p class="card-text author"><i>{{ book.author }}</i> </p>
-                                <p class="card-text genre">{{ book.genre }}</p>
-                                <p class="card-text">{{ book.description }}</p>
-                                {% if request.user in book.favourites.filter %}
-                                    <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from favourites</a>
-                                {% else %}
-                                    <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Add to favourites</a>
-                                {% endif %}
-                                <a href="{% url 'book details' book.pk %}" class="btn btn-primary">Details</a>
-                                <a href="#" class="btn btn-primary">Edit</a>
-                            </div>
+    <div class="container mb-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for book in books %}
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ book.cover_photo.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <p class="card-text author"><i>{{ book.author }}</i> </p>
+                            <p class="card-text genre">{{ book.genre }}</p>
+                            <p class="card-text">{{ book.description }}</p>
+                            {% if request.user in book.favourites.filter %}
+                                <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from favourites</a>
+                            {% else %}
+                                <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Add to favourites</a>
+                            {% endif %}
+                            <a href="{% url 'book details' book.pk %}" class="btn btn-primary">Details</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
+    </div>
 
         <!-- End Card -->
+{% endblock %}

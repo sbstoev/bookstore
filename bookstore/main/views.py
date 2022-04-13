@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 
 from bookstore.common.view_mixins import RedirectToDashboard
-from bookstore.main.forms import CreateBookForm
+from bookstore.main.forms import CreateBookForm, BookEditForm
 
 from bookstore.main.models import Book
 
@@ -21,7 +21,6 @@ class DashboardView(views.ListView):
     model = Book
     template_name = 'main/dashboard.html'
     context_object_name = 'books'  # rename the object from class Book
-
 
 
 class AboutUsView(views.ListView):
@@ -47,11 +46,13 @@ class BookDetailsView(views.DetailView):
     template_name = 'main/book_details.html'
     context_object_name = 'book'
 
-# class EditBookView(views.UpdateView):
-#     template_name = 'main/pet_edit.html'
-#     form_class = EditPetForm
-#
-#
+
+class BookEditView(views.UpdateView):
+    model = Book
+    template_name = 'main/book_edit.html'
+    form_class = BookEditForm
+
+
 # class DeleteBookView(views.DeleteView):
 #     template_name = 'main/pet_delete.html'
 #     form_class = DeletePetForm

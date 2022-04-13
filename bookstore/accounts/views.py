@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
+from django import forms
 
 from bookstore.accounts.form import CreateProfileForm, EditProfileForm
 from bookstore.accounts.models import Profile
@@ -40,19 +41,65 @@ class ProfileDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
 
 class ProfileEditView(auth_mixins.LoginRequiredMixin, views.UpdateView):
     model = Profile
+    form_class = EditProfileForm
     template_name = 'accounts/profile_edit.html'
-    fields = (
-        'first_name',
-        'last_name',
-        'picture',
-        'date_of_birth',
-        'description',
-        'email',
-        'gender',
-    )
+    # fields = (
+    #     'first_name',
+    #     'last_name',
+    #     'picture',
+    #     'email',
+    #     'address',
+    #     'city',
+    #     'zip',
+    # )
 
     def get_success_url(self):  # <-- because we need to give a pk
         return reverse_lazy('profile details', kwargs={'pk': self.object.user_id})
+
+    # class Meta:
+    #     model = Profile
+    #     fields = '__all__'
+    #     widgets = {
+    #         'first_name': forms.TextInput(
+    #             attrs={
+    #                 'class': 'form-control',
+    #                 'placeholder': 'Enter first name',
+    #             }
+    #         ),
+    #         'last_name': forms.TextInput(
+    #             attrs={
+    #                 'class': 'form-control',
+    #                 'placeholder': 'Enter last name',
+    #             }
+    #         ),
+    #         'picture': forms.TextInput(
+    #             attrs={
+    #                 'class': 'form-control',
+    #                 'placeholder': 'Enter URL',
+    #             }
+    #         ),
+    #         'email': forms.EmailInput(
+    #             attrs={
+    #                 'class': 'form-control',
+    #                 'placeholder': 'name@gmail.com',
+    #             }
+    #         ),
+    #         'address': forms.TextInput(attrs={
+    #                 'class': 'form-control',
+    #                 'placeholder': '1234 Main St',
+    #             }
+    #         ),
+    #         'city': forms.TextInput(attrs={
+    #                 'class': 'form-control',
+    #                 'placeholder': 'Enter City',
+    #             }
+    #         ),
+    #         'zip': forms.TextInput(attrs={
+    #             'class': 'form-control',
+    #             'placeholder': 'Enter Zip',
+    #             }
+    #         ),
+    #     }
 
 
 class ChangeUserPasswordView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeView):

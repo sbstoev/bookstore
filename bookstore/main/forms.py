@@ -1,20 +1,9 @@
 from django import forms
 
-from bookstore.common.helpers import BootstrapFormMixin
 from bookstore.main.models import Book
 
 
 class CreateBookForm(forms.ModelForm):
-    # def __init__(self, user, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.user = user
-    #     # self._init_bootstrap_form_controls()
-    #
-    # def save(self, commit=True):
-    #     book = super().save(commit=False)   # <-- get book instance, with commit=False, so it doesn't go to the base
-    #     book.user = self.user
-    #     if commit:
-    #         book.save()
 
     class Meta:
         model = Book
@@ -22,39 +11,42 @@ class CreateBookForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': 'Enter book tile',
                 }
             ),
             'author': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': 'Enter book author',
                 }
             ),
+            # 'genre': forms.SelectMultiple(
+            #     attrs={
+            #         'class': 'form-control',
+            #         'placeholder': 'Choose genre',
+            #     }
+            # ),
             'description': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': 'Enter book description',
                 }
             ),
+
         }
 
 
-# class EditPetForm(BootstrapFormMixin, forms.ModelForm):
-#     MIN_DATE_OF_BIRTH = date(1920, 1, 1)
-#     MAX_DATE_OF_BIRTH = date.today()
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self._init_bootstrap_form_controls()
-#
-#     # def clean_date_of_birth(self):
-#     #     MaxDateValidator(date.today())(self.cleaned_data['date_of_birth'])
-#     #     return self.cleaned_data['date_of_birth']
-#
-#     class Meta:
-#         model = Pet
-#         exclude = ('user_profile',)
-#
-#
+class BookEditForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Book
+        fields = ('title', 'author', 'genre', 'description', 'cover_photo')
+        # exclude = ('user_profile',)
+
+
 # class DeletePetForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)

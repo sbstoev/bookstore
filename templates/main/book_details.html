@@ -22,8 +22,12 @@
             <br>
             <div class="imageTextDescription">{{ book.description }}</div>
             <br> <br>
-            <a href="#" class="btn btn-primary">Add to favourites</a>
-            <a href="#" class="btn btn-primary">Edit</a>
+            {% if request.user in book.favourites.filter %}
+                <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from favourites</a>
+            {% else %}
+                <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Add to favourites</a>
+            {% endif %}
+            <a href="{% url 'edit book' book.pk %}" class="btn btn-primary">Edit</a>
             <a href="#" class="btn btn-primary">Delete</a>
         </div>
     </div>
