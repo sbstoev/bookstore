@@ -2,7 +2,7 @@ from django.urls import path, reverse_lazy
 from django.views.generic import RedirectView
 
 from bookstore.accounts.views import UserRegisterView, UserLoginView, UserLogoutView, ProfileDetailsView, \
-    ProfileEditView, ChangeUserPasswordView, FavouritesDetailsView, FavouritesDeleteView, \
+    ProfileEditView, ChangeUserPasswordView, FavouritesDetailsView, \
     favourite_add
 
 urlpatterns = (
@@ -16,5 +16,5 @@ urlpatterns = (
     path('change_password_done/', RedirectView.as_view(url=reverse_lazy('dashboard')), name='change_password_done'),
     path('favourites/<int:pk>/', FavouritesDetailsView.as_view(), name='favourites details'),
     path('favourites/add/<int:pk>/', favourite_add, name='favourite add'),
-    path('favourites/delete/<int:pk>/', FavouritesDeleteView.as_view(), name='favourites delete'),
+    # path('favourites/delete/<int:pk>/', FavouritesDeleteView.as_view(), name='favourites delete'),
 )

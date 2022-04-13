@@ -43,63 +43,9 @@ class ProfileEditView(auth_mixins.LoginRequiredMixin, views.UpdateView):
     model = Profile
     form_class = EditProfileForm
     template_name = 'accounts/profile_edit.html'
-    # fields = (
-    #     'first_name',
-    #     'last_name',
-    #     'picture',
-    #     'email',
-    #     'address',
-    #     'city',
-    #     'zip',
-    # )
 
     def get_success_url(self):  # <-- because we need to give a pk
         return reverse_lazy('profile details', kwargs={'pk': self.object.user_id})
-
-    # class Meta:
-    #     model = Profile
-    #     fields = '__all__'
-    #     widgets = {
-    #         'first_name': forms.TextInput(
-    #             attrs={
-    #                 'class': 'form-control',
-    #                 'placeholder': 'Enter first name',
-    #             }
-    #         ),
-    #         'last_name': forms.TextInput(
-    #             attrs={
-    #                 'class': 'form-control',
-    #                 'placeholder': 'Enter last name',
-    #             }
-    #         ),
-    #         'picture': forms.TextInput(
-    #             attrs={
-    #                 'class': 'form-control',
-    #                 'placeholder': 'Enter URL',
-    #             }
-    #         ),
-    #         'email': forms.EmailInput(
-    #             attrs={
-    #                 'class': 'form-control',
-    #                 'placeholder': 'name@gmail.com',
-    #             }
-    #         ),
-    #         'address': forms.TextInput(attrs={
-    #                 'class': 'form-control',
-    #                 'placeholder': '1234 Main St',
-    #             }
-    #         ),
-    #         'city': forms.TextInput(attrs={
-    #                 'class': 'form-control',
-    #                 'placeholder': 'Enter City',
-    #             }
-    #         ),
-    #         'zip': forms.TextInput(attrs={
-    #             'class': 'form-control',
-    #             'placeholder': 'Enter Zip',
-    #             }
-    #         ),
-    #     }
 
 
 class ChangeUserPasswordView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeView):
@@ -110,8 +56,6 @@ class ChangeUserPasswordView(auth_mixins.LoginRequiredMixin, auth_views.Password
 #     template_name = 'accounts/profile_delete.html'
 #     form_class = DeletePetForm
 
-# class FavouritesAddView(views.CreateView):
-#     pass
 
 @login_required
 def favourite_add(request, pk):
@@ -148,6 +92,3 @@ class FavouritesDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
 
         return context
 
-
-class FavouritesDeleteView(views.DeleteView):
-    pass

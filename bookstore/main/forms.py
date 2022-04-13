@@ -1,5 +1,6 @@
 from django import forms
 
+from bookstore.common.helpers import DisabledFieldsFormMixin
 from bookstore.main.models import Book
 
 
@@ -44,19 +45,20 @@ class BookEditForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ('title', 'author', 'genre', 'description', 'cover_photo')
-        # exclude = ('user_profile',)
 
 
-# class DeletePetForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self._init_bootstrap_form_controls()
-#         self._init_disabled_fields()
-#
-#     def save(self, commit=True):
-#         self.instance.delete()
-#         return self.instance
-#
-#     class Meta:
-#         model = Pet
-#         exclude = ('user_profile',)
+class BookDeleteForm(DisabledFieldsFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self._init_disabled_fields()
+        for _, field in self.fields.items():
+            field.widget.attrs['disabled'] = 'disabled'
+            field.required = False
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance
+
+    class Meta:
+        model = Book
+        fields = ('title', 'author', 'genre', 'description', 'cover_photo')

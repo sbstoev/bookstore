@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 
 from bookstore.common.view_mixins import RedirectToDashboard
-from bookstore.main.forms import CreateBookForm, BookEditForm
+from bookstore.main.forms import CreateBookForm, BookEditForm, BookDeleteForm
 
 from bookstore.main.models import Book
 
@@ -52,7 +52,30 @@ class BookEditView(views.UpdateView):
     template_name = 'main/book_edit.html'
     form_class = BookEditForm
 
+    success_url = reverse_lazy('dashboard')
 
-# class DeleteBookView(views.DeleteView):
-#     template_name = 'main/pet_delete.html'
-#     form_class = DeletePetForm
+
+class BookDeleteView(views.DeleteView):
+    model = Book
+    template_name = 'main/book_delete.html'
+    form_class = BookDeleteForm
+
+    success_url = reverse_lazy('dashboard')
+
+# def delete_album(request, pk):
+#     album = Album.objects.get(pk=pk)
+#
+#     if request.method == 'POST':
+#         album_form = DeleteAlbumForm(request.POST, request.FILES, instance=album)
+#         if album_form.is_valid():
+#             album_form.save()
+#             # album.delete()
+#             return redirect('show home')
+#     else:
+#         album_form = DeleteAlbumForm(instance=album)
+#
+#     context = {
+#         'album_form': album_form,
+#         'album': album,
+#     }
+#     return render(request, 'delete-album.html', context)
