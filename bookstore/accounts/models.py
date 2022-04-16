@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth import models as auth_models
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 from bookstore.accounts.managers import BookstoreUserManager
+from bookstore.common.validators import validate_only_letters
 
 
 class BookstoreUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -31,42 +33,27 @@ class Profile(models.Model):
     LAST_NAME_MIN_LENGTH = 2
     LAST_NAME_MAX_LENGTH = 30
 
-    MALE = 'Male'
-    FEMALE = 'Female'
-    DO_NOT_SHOW = 'Do not show'
-    NON_BINARY = 'Non binary'
-
-    GENDERS = [(x, x) for x in (MALE, FEMALE, DO_NOT_SHOW)]
-
-    # same as:
-    # GENDERS = [
-    #     ('Male', 'Male'),
-    #     ('Female', 'Female'),
-    #     ('Do not show', 'Do not show')
-    # ]
-
-    # id/ pk by default
     first_name = models.CharField(
         max_length=FIRST_NAME_MAX_LENGTH,
         validators=(
-            # MinLengthValidator(FIRST_NAME_MIN_LENGTH),
-            # validate_only_letters,
+            MinLengthValidator(FIRST_NAME_MIN_LENGTH),
+            validate_only_letters,
         )
     )
 
     last_name = models.CharField(
         max_length=LAST_NAME_MAX_LENGTH,
         validators=(
-            # MinLengthValidator(LAST_NAME_MIN_LENGTH),
-            # validate_only_letters,
+            MinLengthValidator(LAST_NAME_MIN_LENGTH),
+            validate_only_letters,
         )
     )
 
     picture = models.ImageField()
 
     email = models.EmailField(
-        null=True,  # because it is optional
-        blank=True,  # so it works with administration
+        null=True,
+        blank=True,
     )
 
     address = models.CharField(

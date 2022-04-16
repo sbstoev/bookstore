@@ -7,10 +7,10 @@
         <!-- Login Form -->
         <form class="row g-3" method="POST" enctype="multipart/form-data">
             <div class="col-md-12">
-                <div class="register">Delete Book</div>
+                <div class="register">Are you sure you want to delete this book?</div>
             </div>
             {% csrf_token %}
-            {{ form }}
+{#            {{ form }}#}
             <div class="col--md-12">
               <button type="submit" class="btn btn-primary">Delete</button>
             </div>
@@ -18,9 +18,9 @@
         <!-- End Login Form -->
 
     </div>
-    <div class="col-5">
-        <div class="imageBack"></div>
-    </div>
+{#    <div class="col-5">#}
+{#        <div class="imageBack"></div>#}
+{#    </div>#}
 </div>
 
 {% endblock %}

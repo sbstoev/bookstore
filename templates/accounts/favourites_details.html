@@ -8,6 +8,9 @@
     <div class="TextSection">My Books</div>
 </div>
 <br>
+{% if not favourites %}
+    <h3>No favourite books added yes.</h3>
+{% endif %}
 <!-- Card with Info for the Book -->
 
 <div class="container mb-5">
@@ -21,7 +24,7 @@
                         <p class="card-text author"><i>{{ book.author }}</i> </p>
                         <p class="card-text genre">{{ book.genre }}</p>
                         <p class="card-text">{{ book.description }}</p>
-                        <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from favourites</a>
+                        <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from my books</a>
                         <a href="{% url 'book details' book.pk %}" class="btn btn-primary">Details</a>
                     </div>
                 </div>

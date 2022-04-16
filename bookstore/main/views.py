@@ -62,20 +62,3 @@ class BookDeleteView(views.DeleteView):
 
     success_url = reverse_lazy('dashboard')
 
-# def delete_album(request, pk):
-#     album = Album.objects.get(pk=pk)
-#
-#     if request.method == 'POST':
-#         album_form = DeleteAlbumForm(request.POST, request.FILES, instance=album)
-#         if album_form.is_valid():
-#             album_form.save()
-#             # album.delete()
-#             return redirect('show home')
-#     else:
-#         album_form = DeleteAlbumForm(instance=album)
-#
-#     context = {
-#         'album_form': album_form,
-#         'album': album,
-#     }
-#     return render(request, 'delete-album.html', context)

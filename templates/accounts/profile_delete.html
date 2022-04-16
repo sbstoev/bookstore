@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block page_content %}
 
-</body>
-</html>
+<div class="row">
+    <div class="col-7">
+
+        <!-- Login Form -->
+        <form class="row g-3" method="POST" enctype="multipart/form-data">
+            <div class="col-md-12">
+                <div class="register">Are you sure you want to delete your profile?</div>
+            </div>
+            {% csrf_token %}
+            {{ form }}
+            <div class="col--md-12">
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </div>
+        </form>
+        <!-- End Login Form -->
+
+    </div>
+{#    <div class="col-5">#}
+{#        <div class="imageBack"></div>#}
+{#    </div>#}
+</div>
+
+{% endblock %}

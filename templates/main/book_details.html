@@ -22,13 +22,18 @@
             <br>
             <div class="imageTextDescription">{{ book.description }}</div>
             <br> <br>
-            {% if request.user in book.favourites.filter %}
-                <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from favourites</a>
-            {% else %}
-                <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Add to favourites</a>
+            {% if request.user.is_authenticated %}
+                {% if not request.user.is_staff %}
+                    {% if request.user in book.favourites.filter %}
+                        <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Remove from my books</a>
+                    {% else %}
+                        <a href="{% url 'favourite add' book.pk %}" class="btn btn-primary">Add to my books</a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'edit book' book.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete book' book.pk %}" class="btn btn-primary">Delete</a>
+                {% endif %}
             {% endif %}
-            <a href="{% url 'edit book' book.pk %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'delete book' book.pk %}" class="btn btn-primary">Delete</a>
         </div>
     </div>
 </div>

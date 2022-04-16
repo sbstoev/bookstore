@@ -12,8 +12,4 @@ urlpatterns = (
     path('book/add/', CreateBookView.as_view(), name='create book'),
     path('book/edit/<int:pk>/', BookEditView.as_view(), name='edit book'),
     path('book/delete/<int:pk>/', BookDeleteView.as_view(), name='delete book'),
-
-    # path('photo/add/', CreateBookPhotoView.as_view(), name='create book photo'),
-    # path('photo/like/<int:pk>/', like_book_photo, name='like book photo'),
-    # path('photo/edit/<int:pk>/', EditBookPhotoView.as_view(), name='edit book photo'),
 )

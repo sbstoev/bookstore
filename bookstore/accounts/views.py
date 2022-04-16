@@ -7,16 +7,21 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 from django import forms
 
-from bookstore.accounts.form import CreateProfileForm, EditProfileForm
+from bookstore.accounts.form import CreateProfileForm, EditProfileForm, DeleteProfileForm
 from bookstore.accounts.models import Profile
 from bookstore.common.view_mixins import RedirectToDashboard
 from bookstore.main.models import Book
 
 
-class UserRegisterView(RedirectToDashboard, views.CreateView):
+class UserRegisterView(views.CreateView):
     form_class = CreateProfileForm
     template_name = 'accounts/profile_create.html'
     success_url = reverse_lazy('dashboard')
+
+    def get_form_kwargs(self):
+        form_kwargs = super().get_form_kwargs()
+        form_kwargs['request'] = self.request
+        return form_kwargs
 
 
 class UserLoginView(auth_views.LoginView):
@@ -53,8 +58,24 @@ class ChangeUserPasswordView(auth_mixins.LoginRequiredMixin, auth_views.Password
 
 
 # class ProfileDeleteView(views.DeleteView):
+#     model = Profile
 #     template_name = 'accounts/profile_delete.html'
-#     form_class = DeletePetForm
+#     form_class = DeleteProfileForm
+
+def delete_profile(request, pk):
+    user = request.user
+    if request.method == 'POST':
+        profile_form = DeleteProfileForm(request.POST, instance=user)
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('dashboard')
+    else:
+        profile_form = DeleteProfileForm(instance=user)
+
+    context = {
+        'profile_form': profile_form,
+    }
+    return render(request, 'accounts/profile_delete.html', context)
 
 
 @login_required

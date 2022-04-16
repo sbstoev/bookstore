@@ -1,12 +1,17 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth import forms as auth_forms
 
 from bookstore.accounts.models import Profile
 from bookstore.common.helpers import BootstrapFormMixin
+from bookstore.main.models import Book
 
 
 class CreateProfileForm(auth_forms.UserCreationForm):
+
+    def __init__(self, request, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.request = request
 
     first_name = forms.CharField(
         max_length=Profile.FIRST_NAME_MAX_LENGTH,
@@ -63,10 +68,6 @@ class CreateProfileForm(auth_forms.UserCreationForm):
         )
     )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # self._init_bootstrap_form_controls()
-
     def save(self, commit=True):
         user = super().save(commit=commit)
 
@@ -82,6 +83,11 @@ class CreateProfileForm(auth_forms.UserCreationForm):
 
         if commit:
             profile.save()
+            auth_user = authenticate(
+                username=self.cleaned_data['username'],
+                password=self.cleaned_data['password1']
+            )
+            login(self.request, auth_user)
         return user
 
     class Meta:
@@ -159,16 +165,12 @@ class EditProfileForm(forms.ModelForm):
         }
 
 
-# class DeleteProfileForm(forms.ModelForm):
-#     def save(self, commit=True):
-#         pets = list(self.instance.pet_set.all())
-#         # should be done with signals
-#         # because this breaks the abstraction of the auth app
-#         PetPhoto.objects.filter(tagged_pet__in=pets).delete()
-#         self.instance.delete()
-#
-#         return self.instance
-#
-#     class Meta:
-#         model = Pet
-#         fields = ()
+class DeleteProfileForm(forms.ModelForm):
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance
+
+    class Meta:
+        model = Profile
+        fields = ()
