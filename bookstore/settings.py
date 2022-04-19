@@ -122,10 +122,21 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+'''
+Changes:
+1. Rename
+STATICFILES_DIRS = [
     BASE_DIR / 'staticfiles',
 ]
-
-# STATIC_ROOT = BASE_DIR / 'staticfiles'
+to 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+2. Rename folder 'staticfiles' to 'static'
+'''
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # STATIC_URL = '/static/'
 
