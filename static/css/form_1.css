@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.contContainer{
+
+     width: 100vw;
+     height: 100vh;
+
+}
+
+.container{
+  margin: 0;
+  margin-left:0;
+  margin-right: 0;
+  max-height: 100vh;
+ max-width: 100vw;
+}
+
+
+
+.h-100{
+    height:100vh;
+    /* background-image: linear-gradient(to bottom, rgba(137,194,248,1), rgba(137,194,248,0.2),rgba(137,194,248,0)) */
+}
+
+
+.g-3 {
+    width: 50vw;
+    height: 90vh;
+    /* border: 2px solid rgb(137,194,248); */
+    border-radius: 5%;
+    padding: 1em;
+}
