@@ -25,7 +25,7 @@ body{
     width: 60%;
     margin: 0 auto;
     height: 90%;
-    background-image: url('/staic/images/back.png');
+    background-image: url('/static/images/back.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -195,14 +195,14 @@ border: none !important;}
   height: 30vh;
 }
 
-/*.ProfilePic{*/
-/*    width: 10vw;*/
-/*    height: 25vh;*/
-/*    */
-/*    background-image: url('/static/images/6-romantic-hairstyle-with-bangs-B2PCYm1Avge.jpg');*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*}*/
+.ProfilePic{
+    width: 10vw;
+    height: 25vh;
+
+    background-image: url('/static/images/6-romantic-hairstyle-with-bangs-B2PCYm1Avge.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .profSurname{
     font-size: 1.2em;
