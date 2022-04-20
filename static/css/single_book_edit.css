@@ -1,14 +1,4 @@
 
-
-/*@font-face {*/
-/*    font-family: "EYInterstate";*/
-/*    src: url("D:/Itaca/EY/EY mockups/OPV_FrontEnd/font/EYInterstate-Regular.ttf"),*/
-/*    url("D:/Itaca/EY/EY mockups/OPV_FrontEnd/font/EYInterstate-Bold.ttf"),*/
-/*    url("D:/Itaca/EY/EY mockups/OPV_FrontEnd/font/EYInterstate-Light.ttf")*/
-/*    ;*/
-/*}*/
-
-
 body{
    margin-left: 2vw;
    margin-right: 2vw;
@@ -61,11 +51,7 @@ body{
 .container-fluid{
 height: 20vh;
 }
-/* .form-label{
-    font-size: 1vw;
-    font-family:"EYInterstate";
-}
- */
+
  .navbar-collapse{
      flex-grow: 0.009 !important;
     

@@ -1,8 +1,4 @@
 
-
-
-
-
 body{
     margin-left: 2vw;
     margin-right: 2vw;
@@ -48,11 +44,7 @@ body{
 .container-fluid{
 height: 20vh;
 }
-/* .form-label{
-    font-size: 1vw;
-    font-family:"EYInterstate";
-}
- */
+
  .navbar-collapse{
      flex-grow: 0.009 !important;
     
