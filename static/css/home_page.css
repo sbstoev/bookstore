@@ -14,7 +14,7 @@ body{
     width: 60%;
     margin: 0 auto;
     height: 90%;
-    background-image: url('/staticfiles/images/back.png');
+    background-image: url('/static/images/back.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -41,7 +41,7 @@ body{
     margin-top: 20px;
     
     height:70px;
-    background-image: url('/staticfiles/images/logo.png');
+    background-image: url('/static/images/logo.png');
     background-repeat: no-repeat;
     background-size:contain;
 }
@@ -148,7 +148,7 @@ height: 20vh;
         height: 6vh;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: url('/staticfiles/images/noun-profile-1995063.png');
+        background-image: url('/static/images/noun-profile-1995063.png');
     
     }
 
