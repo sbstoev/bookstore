@@ -190,7 +190,7 @@ border: none !important;}
 
 .imageCover{
     height: 80Vh;
-   /*  background-image: url(./images/BookSingleGroup11.png); */
+     background-image: url(/static/images/BookSingleGroup11.png);
     background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
