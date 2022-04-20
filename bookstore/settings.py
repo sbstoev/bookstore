@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-@=0g9(w2w0u&%=s46d+3vu8vm%&y+0nyu=s2ect+9aegm*@yfg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kx-books.herokuapp.com']
 
 
 # Application definition
@@ -124,6 +124,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 '''
 Changes:
 1. Rename
@@ -136,7 +137,7 @@ STATICFILES_DIRS = [
 ]
 2. Rename folder 'staticfiles' to 'static'
 '''
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # STATIC_URL = '/static/'
 
