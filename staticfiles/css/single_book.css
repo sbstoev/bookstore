@@ -36,7 +36,7 @@ body{
     width: 60%;
     margin: 0 auto;
     height: 90%;
-    background-image: url('/static/images/back.png');
+    background-image: url(/staticfiles/images/back.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -54,7 +54,7 @@ body{
     margin-top: 20px;
     border: none !important;
     height:70px;
-    background-image: url('/static/images/logo.png');
+    background-image: url(/staticfiles/images/logo.png);
     background-repeat: no-repeat;
     background-size:contain;
 }
@@ -156,7 +156,7 @@ height: 20vh;
         height: 6vh;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: url('/static/images/noun-profile-1995063.png');
+        background-image: url(/staticfiles/images/noun-profile-1995063\ 1.png);
     
     }
 
@@ -202,40 +202,31 @@ border: none !important;}
     font-size: 1.1em !important;
 }
 
-.profileDetails{
-  height: 30vh;
+.imageCover{
+    height: 80Vh;
+    background-image: url(/staticfiles/images/BookSingleGroup11.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
-/*.ProfilePic{*/
-/*    width: 10vw;*/
-/*    height: 25vh;*/
-/*    */
-/*    !*background-image: url('/static/images/6-romantic-hairstyle-with-bangs-B2PCYm1Avge.jpg');*!*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*}*/
+.imageText{
+    width: 80%;
+}
 
-.profSurname{
+.imageTextTitle{
+    font-size: 1.5em;
+}
+
+.imageTextAuthor{
     font-size: 1.2em;
 }
 
-.profName{
-    font-size: 1.2em;
+.imageTextCategory{
+    color: #78abdb;
+    font-size: 1em;
 }
 
-.nameUser{
-    display: flex;
-    flex-direction: row;
-}
-
-.adressUser{
-    display: flex;
-    flex-direction: row;
-}
-
-.adressUser>div:nth-child(2){
-    margin-left: 1vw;
-}
-.nameUser>div:nth-child(2){
-    margin-left: 0.5vw;
+.imageTextDescription{
+    width: 80%;
 }

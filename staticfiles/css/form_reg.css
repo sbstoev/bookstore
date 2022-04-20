@@ -6,7 +6,7 @@
 body{
     margin-left: 2vw;
     margin-right: 2vw;
-    padding: 0;
+     padding: 0;
  }
 
 
@@ -14,22 +14,13 @@ body{
     width: 60%;
     margin: 0 auto;
     height: 90%;
-    background-image: url('/static/images/back.png');
+    background-image: url(/staticfiles/images/back.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
   
-.carousel{
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-}
-.carousel-inner{
-    margin: 0 auto;
-    width: 90%;
-    height: 100%;
-}
+
 
 .navbar {
     margin: 0 auto;
@@ -41,7 +32,7 @@ body{
     margin-top: 20px;
     
     height:70px;
-    background-image: url('/static/images/logo.png');
+    background-image: url(/staticfiles/images/logo.png);
     background-repeat: no-repeat;
     background-size:contain;
 }
@@ -98,7 +89,7 @@ height: 20vh;
 .footer{
     
     padding-top: 5vh;
-    justify-content: center;
+   justify-content: center;
     width: 100%;
     height: 50vh;
     margin:0 auto;
@@ -148,7 +139,7 @@ height: 20vh;
         height: 6vh;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: url('/static/images/noun-profile-1995063.png');
+        background-image: url(/staticfiles/images/noun-profile-19950631.png);
     
     }
 
@@ -159,5 +150,31 @@ padding: 0 !important;
 
     .Content{
         margin-bottom: 2vh;
+    }
+    
+
+    .register{
+        font-size: 1.8em;
+       
+        
+    }
+    
+    .profile{
+     padding: 0.5em;
+     margin-left: -1em;
+    }
+    
+    .imageBack{
+       
+        width: 100%;
+        height:105%;
+        background-image: url('/staticfiles/images/jenata-bez-siyanka.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .btn-link{
+        margin-top: -0.4em;
+        margin-left: -0.5em;
     }
     
