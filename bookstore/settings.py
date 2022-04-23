@@ -14,8 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@=0g9(w2w0u&%=s46d+3vu8vm%&y+0nyu=s2ect+9aegm*@yfg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# Deployment 1/5 - must be False for deployment
+DEBUG = True
 
+# Deployment 2/5 - add link to deployed site
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'kx-books.herokuapp.com',
@@ -34,6 +36,7 @@ INSTALLED_APPS = [
     'bookstore.main',
 ]
 
+# Deployment 3/5 - add whitenoise middleware
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -70,27 +73,29 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'bookstore_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postpa$$9221',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
+# Local DataBase:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df4gs781mmn0rd',
-        'USER': 'hfzenqzkdhnekz',
-        'PASSWORD': 'ea4a215547f72f2bc922758b0ec47f2e0c4f34871e83a165e2e9bef57463c7a3',
-        'HOST': 'ec2-34-246-227-219.eu-west-1.compute.amazonaws.com',
+        'NAME': 'bookstore_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postpa$$9221',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+# Deployment 4/5 - DataBase data from Heroku:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'df4gs781mmn0rd',
+#         'USER': 'hfzenqzkdhnekz',
+#         'PASSWORD': 'ea4a215547f72f2bc922758b0ec47f2e0c4f34871e83a165e2e9bef57463c7a3',
+#         'HOST': 'ec2-34-246-227-219.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # CACHES = {
 #     'default': {
@@ -135,48 +140,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+# Deployment 5/5 - Settings for deployment in Heroku:
 BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR_2, 'static'),
 )
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Settings for local run:
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+# ]
 
 '''
 Original:
-
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles',
-]
-
-Changes:
-1. Rename
-STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles',
-]
-to 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-2. Rename folder 'staticfiles' to 'static'
-'''
-
-
-# STATIC_URL = '/static/'
-
-# # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'staticfiles',
+# ]
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 MEDIA_URL = '/media/'
+'''
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
