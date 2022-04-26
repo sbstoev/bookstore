@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.http import HttpResponse, Http404
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
+from bookstore.accounts.models import Profile
 from bookstore.common.view_mixins import RedirectToDashboard
 from bookstore.main.forms import CreateBookForm, BookEditForm, BookDeleteForm
 
@@ -61,4 +63,3 @@ class BookDeleteView(views.DeleteView):
     form_class = BookDeleteForm
 
     success_url = reverse_lazy('dashboard')
-

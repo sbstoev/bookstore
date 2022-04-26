@@ -1,5 +1,6 @@
 from django.urls import path
 
+import bookstore.main.views
 from bookstore.main.views import HomeView, DashboardView, AboutUsView, CreateBookView, BookDetailsView, BookEditView, \
     BookDeleteView
 
@@ -12,4 +13,8 @@ urlpatterns = (
     path('book/add/', CreateBookView.as_view(), name='create book'),
     path('book/edit/<int:pk>/', BookEditView.as_view(), name='edit book'),
     path('book/delete/<int:pk>/', BookDeleteView.as_view(), name='delete book'),
+
+    # path('404/', page_not_found, name='page not found'),
 )
+
+
