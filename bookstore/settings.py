@@ -19,8 +19,8 @@ DEBUG = False
 
 # Deployment 2/5 - add link to deployed site
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
+    # 'localhost',
+    # '127.0.0.1',
     'kx-books.herokuapp.com',
 ]
 
@@ -75,28 +75,28 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # Local DataBase:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstore_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postpa$$9221',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# Deployment 4/5 - DataBase data from Heroku:
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'df4gs781mmn0rd',
-#         'USER': 'hfzenqzkdhnekz',
-#         'PASSWORD': 'ea4a215547f72f2bc922758b0ec47f2e0c4f34871e83a165e2e9bef57463c7a3',
-#         'HOST': 'ec2-34-246-227-219.eu-west-1.compute.amazonaws.com',
+#         'NAME': 'bookstore_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postpa$$9221',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
 # }
+
+# Deployment 4/5 - DataBase data from Heroku:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'df4gs781mmn0rd',
+        'USER': 'hfzenqzkdhnekz',
+        'PASSWORD': 'ea4a215547f72f2bc922758b0ec47f2e0c4f34871e83a165e2e9bef57463c7a3',
+        'HOST': 'ec2-34-246-227-219.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 # CACHES = {
 #     'default': {

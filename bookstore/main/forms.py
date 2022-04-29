@@ -186,4 +186,3 @@ class EventDeleteForm(DisabledFieldsFormMixin, forms.ModelForm):
     class Meta:
         model = Event
         fields = ('title', 'date', 'city', 'country', 'picture', 'link')
- 
