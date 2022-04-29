@@ -43,6 +43,17 @@ class ProfileDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
     template_name = 'accounts/profile_details.html'
     context_object_name = 'profile'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        favourites = Book.objects.filter(favourites=self.request.user)
+        favourites_count = 1
+
+        context.update({
+            'favourites': favourites,
+            'favourites_count': favourites_count,
+        })
+        return context
+
 
 class ProfileEditView(auth_mixins.LoginRequiredMixin, views.UpdateView):
     model = Profile
@@ -108,8 +119,9 @@ class FavouritesDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # This checks if the current user in the owner:
+
         context['favourites'] = self.books.filter(favourites=self.request.user)
+        context['favourites_count'] = len(self.books.filter(favourites=self.request.user))
 
         return context
 

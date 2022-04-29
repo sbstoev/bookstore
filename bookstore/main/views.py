@@ -5,9 +5,10 @@ from django.views import generic as views
 
 from bookstore.accounts.models import Profile
 from bookstore.common.view_mixins import RedirectToDashboard
-from bookstore.main.forms import CreateBookForm, BookEditForm, BookDeleteForm
+from bookstore.main.forms import CreateBookForm, BookEditForm, BookDeleteForm, AuthorCreateForm, AuthorEditForm, \
+    AuthorDeleteForm, EventCreateForm, EventEditForm, EventDeleteForm
 
-from bookstore.main.models import Book
+from bookstore.main.models import Book, Author, Event
 
 
 class HomeView(views.TemplateView):
@@ -23,6 +24,18 @@ class DashboardView(views.ListView):
     model = Book
     template_name = 'main/dashboard.html'
     context_object_name = 'books'  # rename the object from class Book
+
+
+class AuthorsView(views.ListView):
+    model = Author
+    template_name = 'main/authors.html'
+    context_object_name = 'authors'
+
+
+class EventsView(views.ListView):
+    model = Event
+    template_name = 'main/events.html'
+    context_object_name = 'events'
 
 
 class AboutUsView(views.ListView):
@@ -63,3 +76,49 @@ class BookDeleteView(views.DeleteView):
     form_class = BookDeleteForm
 
     success_url = reverse_lazy('dashboard')
+
+
+class AuthorCreateView(views.CreateView):
+    template_name = 'main/author_create.html'
+    form_class = AuthorCreateForm
+
+    success_url = reverse_lazy('authors')
+
+
+class AuthorEditView(views.UpdateView):
+    model = Author
+    template_name = 'main/author_edit.html'
+    form_class = AuthorEditForm
+
+    success_url = reverse_lazy('authors')
+
+
+class AuthorDeleteView(views.DeleteView):
+    model = Author
+    template_name = 'main/author_delete.html'
+    form_class = AuthorDeleteForm
+
+    success_url = reverse_lazy('authors')
+
+
+class EventCreateView(views.CreateView):
+    template_name = 'main/event_create.html'
+    form_class = EventCreateForm
+
+    success_url = reverse_lazy('events')
+
+
+class EventEditView(views.UpdateView):
+    model = Event
+    template_name = 'main/event_edit.html'
+    form_class = EventEditForm
+
+    success_url = reverse_lazy('events')
+
+
+class EventDeleteView(views.DeleteView):
+    model = Event
+    template_name = 'main/event_delete.html'
+    form_class = EventDeleteForm
+
+    success_url = reverse_lazy('events')

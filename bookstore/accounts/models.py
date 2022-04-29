@@ -49,7 +49,10 @@ class Profile(models.Model):
         )
     )
 
-    picture = models.ImageField()
+    picture = models.ImageField(
+        null=True,
+        blank=True,
+    )
 
     email = models.EmailField(
         null=True,

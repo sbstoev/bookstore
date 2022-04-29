@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+
+<div class="SectionTitle">
+    <div class="TextSection">Authors</div>
+</div>
+
+<h1 class='text-center'>
+    {% if not authors %}
+        No authors yet.
+    {% endif %}
+</h1>
+
+<br>
+{% if request.user.is_staff %}
+    <a href="{% url 'author create' %}" class="btn btn-primary">Add</a>
+{% endif %}
+<br>
+<body>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <ul class="list-group list-group-flush">
+            <!-- Author Card -->
+            {% for author in authors %}
+                <li class="list-group-item">
+                    <div class="card mb-3" >
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ author.picture }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ author }}</h5>
+                                    <p class="card-text">{{ author.description }}</p>
+                                    <a href="{{ author.link }}" target="_blank" class="btn btn-link">See more</a>
+                                    {% if request.user.is_staff %}
+                                        <a href="{% url 'author edit' author.pk %}" class="btn btn-primary">Edit</a>
+                                        <a href="{% url 'author delete' author.pk %}" class="btn btn-primary">Delete</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+            <!-- End Card -->
+
+        </ul>
+    </div>
+</body>
+
+{% endblock %}

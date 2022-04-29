@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+   
+<div class="SectionTitle">
+    <div class="TextSEction">Events</div>
+</div>
+
+<h1 class='text-center'>
+    {% if not events %}
+        No events yet.
+    {% endif %}
+</h1>
+
+<br>
+{% if request.user.is_staff %}
+    <a href="{% url 'event create' %}" class="btn btn-primary">Add</a>
+{% endif %}
+<br>
+<br>
+<body>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Author Card -->
+        {% for event in events %}
+            <div class="col">
+                <div class="card">
+                    <img src="{{event.picture }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text data">{{ event.date }}</p>
+                        <p class="card-text"> <i>{{ event.city}}, {{ event.country }}</i> </p>
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <a href="{{ event.link }}" target="_blank" class="btn btn-link">Go to Event</a>
+                        {% if request.user.is_staff %}
+                            <a href="{% url 'event edit' event.pk %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url 'event delete' event.pk %}" class="btn btn-primary">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+{% endblock %}
+
+{#<div class="col">#}
+{#          <div class="card">#}
+{#            <img src="./images/jerusalem.jpg" class="card-img-top" alt="...">#}
+{#            <div class="card-body">#}
+{#              <p class="card-text data">25-26.04.2022 </p>#}
+{#              <p class="card-text"> <i>Jerusalem, Israel</i> </p>#}
+{#              <h5 class="card-title">INTERNATIONAL CONFERENCE OF PHILOSOPHY</h5>#}
+{##}
+{##}
+{##}
+{#              <a href="https://waset.org/philosophy-science-and-scientific-realism-conference-in-april-2022-in-jerusalem" target="_blank" class="btn btn-link">Go to Event</a>#}
+{#            </div>#}
+{#          </div>#}
+{#</div>#}
+{##}
+{#<div class="col">#}
+{#          <div class="card">#}
+{#            <img src="./images/OIP.jpg" class="card-img-top" alt="...">#}
+{#            <div class="card-body">#}
+{#              <p class="card-text data">12.05.2022 </p>#}
+{#              <p class="card-text"> <i>Sofia, Bulgaria</i> </p>#}
+{#              <h5 class="card-title">SOFIA ART BOOK FAIR</h5>#}
+{##}
+{##}
+{##}
+{#              <a href="https://www.facebook.com/sofiaartbookfair/?ref=page_internal" target="_blank" class="btn btn-link">Go to Event</a>#}
+{#            </div>#}
+{#          </div>#}
+{#</div>#}
